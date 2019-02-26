@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import { ItodoStore } from './stores/todoStore';
 import './App.css';
 
-class App extends Component {
+interface AppProps {
+    todoStore?: ItodoStore;
+}
+
+@inject('todoStore')
+@observer
+class App extends Component<AppProps> {
   render() {
+      const { todoInput, addTodo } = this.props.todoStore!;
     return (
       <div className="App">
         <div className="todo-container">
-            <input className="todo-input" type="text" placeholder="What needs to be done?" />
+            <input className="todo-input" type="text" placeholder="What needs to be done?" ref={todoInput} onKeyUp={addTodo}/>
         </div>
       </div>
     );
