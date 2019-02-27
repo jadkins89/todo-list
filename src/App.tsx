@@ -11,11 +11,12 @@ interface AppProps {
 @observer
 class App extends Component<AppProps> {
   render() {
-      const { todoInput, addTodo } = this.props.todoStore!;
+      const { todoInput, addTodo, todos } = this.props.todoStore!;
     return (
       <div className="App">
         <div className="todo-container">
-            <input className="todo-input" type="text" placeholder="What needs to be done?" ref={todoInput} onKeyUp={addTodo}/>
+            <input className="todo-input" type="text" placeholder="What needs to be done?" ref={todoInput} onKeyUp={addTodo} />
+
         </div>
       </div>
     );
