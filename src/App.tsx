@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { ItodoStore } from './stores/todoStore';
+import TodoItem from "./components/TodoItem";
 import './App.css';
 
 interface AppProps {
@@ -16,7 +17,10 @@ class App extends Component<AppProps> {
       <div className="App">
         <div className="todo-container">
             <input className="todo-input" type="text" placeholder="What needs to be done?" ref={todoInput} onKeyUp={addTodo} />
-
+            {
+                todos.map((todo, index) =>
+                <TodoItem key={todo.id} todo={todo} index={index} />
+            )}
         </div>
       </div>
     );
