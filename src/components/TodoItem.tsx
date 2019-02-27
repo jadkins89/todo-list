@@ -1,4 +1,4 @@
-import React, { Component, ChangeEvent } from 'react';
+import React, { Component, ChangeEvent, MouseEvent } from 'react';
 import { inject, observer } from 'mobx-react';
 import { ItodoStore } from '../stores/todoStore';
 import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
@@ -25,7 +25,7 @@ class TodoItem extends Component<TodoItemProps> {
                             {todo.title}
                         </div>
                     </div>
-                    <DeleteTwoToneIcon onClick={(event: ChangeEvent<HTMLInputElement>) => todoStore!.deleteTodo(index)} />
+                    <DeleteTwoToneIcon onClick={(event: MouseEvent<SVGSVGElement>) => todoStore!.deleteTodo(index)} />
                 </div>
             </div>
         );

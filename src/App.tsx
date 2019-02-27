@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { ItodoStore } from './stores/todoStore';
 import TodoItem from "./components/TodoItem";
+import TodosRemaining from "./components/TodosRemaining";
 import './App.css';
 
 interface AppProps {
@@ -21,6 +22,9 @@ class App extends Component<AppProps> {
                 todos.map((todo, index) =>
                 <TodoItem key={todo.id} todo={todo} index={index} />
             )}
+        </div>
+        <div className="remaining-container">
+            <TodosRemaining />
         </div>
       </div>
     );

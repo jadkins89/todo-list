@@ -7,7 +7,8 @@ export interface ItodoStore {
     todos: Itodo[],
     addTodo(event: KeyboardEvent<HTMLInputElement>): void,
     deleteTodo(index: number): void,
-    checkTodo(todo: {}, index: number): void
+    checkTodo(todo: {}, index: number): void,
+    remaining: number
 }
 
 interface Itodo {
@@ -55,4 +56,8 @@ export class todoStore implements ItodoStore {
         todo.completed = !todo.completed;
         this.todos.splice(index, 1, todo);
     }
+
+    @computed get remaining(): number {
+        return this.todos.filter(todo => !todo.completed).length;
+}
 }
