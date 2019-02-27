@@ -1,33 +1,99 @@
+body {
+    background-color: #ffffff;
+    background-image: url("https://c1.staticflickr.com/4/3344/3602400733_fc2e8f68f2_b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .App {
-  text-align: center;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10%;
+    width: 350px;
+    height: auto;
+    box-shadow: 0 4px 8px 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.todo-input {
+    width: 88%;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 6px;
+    margin-top: 2px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    /* font-style: italic; */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+::-webkit-input-placeholder {
+   font-style: italic;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-input:focus {
+    outline: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-item {
+    display: flex;
+    align-items: center;
+    width: 98%;
+    justify-content: space-between;
+    border-top: .5px dotted lightgrey;
+}
+
+.remove-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.todo-item-left {
+    display: flex;
+    padding: 8px;
+    left: 0;
+    margin-left: 10px;
+}
+
+.checkbox {
+    padding: 0px;
+}
+
+
+.todo-item-label {
+  margin-left: 8px;
+  font-size: 20px;
+  /* margin-top: 10px; */
+}
+
+.remaining-container {
+  margin: 0 auto;
+  width: 90%;
+  font-size: 16px;
+  border-top: 1px solid lightgrey;
+  padding: 8px;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.image-box {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.image {
+    margin: 8px;
+    max-width: 95%;
+    height: auto;
+}
+
+.text-centered {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font: 500 40px/0.8 'Great Vibes', Helvetica, sans-serif;
+  color: #fff;
+  text-shadow: 4px 4px 3px rgba(0,0,0,0.1);
 }

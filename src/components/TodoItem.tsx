@@ -1,8 +1,20 @@
 import React, { Component, ChangeEvent, MouseEvent } from 'react';
 import { inject, observer } from 'mobx-react';
 import { ItodoStore } from '../stores/todoStore';
+import Checkbox from '@material-ui/core/Checkbox';
 import DeleteTwoToneIcon from '@material-ui/icons/DeleteTwoTone';
 import '../App.css';
+
+const styles = {
+    delete: {
+        "cursor": 'pointer',
+        "fontSize": '24px'
+    },
+    check: {
+        "padding": '0px',
+        "fontSize": '19px'
+    }
+};
 
 interface TodoItemProps {
     todoStore?: ItodoStore,
@@ -20,12 +32,16 @@ class TodoItem extends Component<TodoItemProps> {
             <div>
                 <div key={key} className="todo-item">
                     <div className="todo-item-left">
-                        <input type="checkbox" onChange={(event: ChangeEvent<HTMLInputElement>) => todoStore!.checkTodo(todo, index)} checked={todo.completed}/>
+                        <Checkbox onChange={(event: ChangeEvent<HTMLInputElement>) => todoStore!.checkTodo(todo, index)} checked={todo.completed} color={'primary'}
+                        style={styles.check}
+                        />
                         <div className="todo-item-label" style={{textDecoration: `${todo.completed ? 'line-through' : ''}`, color: `${todo.completed ? 'lightgrey' : ''}`}}>
                             {todo.title}
                         </div>
                     </div>
-                    <DeleteTwoToneIcon onClick={(event: MouseEvent<SVGSVGElement>) => todoStore!.deleteTodo(index)} />
+                    <DeleteTwoToneIcon
+                    onClick={(event: MouseEvent<SVGSVGElement>) => todoStore!.deleteTodo(index)}
+                    style={styles.delete}/>
                 </div>
             </div>
         );

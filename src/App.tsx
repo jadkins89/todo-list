@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { ItodoStore } from './stores/todoStore';
 import TodoItem from "./components/TodoItem";
 import TodosRemaining from "./components/TodosRemaining";
+import TodoInput from "./components/TodoInput";
 import './App.css';
 
 interface AppProps {
@@ -13,11 +14,17 @@ interface AppProps {
 @observer
 class App extends Component<AppProps> {
   render() {
-      const { todoInput, addTodo, todos } = this.props.todoStore!;
+      const { todos } = this.props.todoStore!;
+      const url: string = "https://www.rockymtnrefl.com/DeadHorsePointcd310631086.jpg";
     return (
       <div className="App">
         <div className="todo-container">
-            <input className="todo-input" type="text" placeholder="What needs to be done?" ref={todoInput} onKeyUp={addTodo} />
+            <div className="image-box">
+                <img className="image" src={url} />
+                <div className="text-centered">Stuff To Get Done
+                </div>
+            </div>
+            <TodoInput />
             {
                 todos.map((todo, index) =>
                 <TodoItem key={todo.id} todo={todo} index={index} />
