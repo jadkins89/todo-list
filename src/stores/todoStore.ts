@@ -6,6 +6,8 @@ export interface ItodoStore {
     todoInput: RefObject<HTMLInputElement>,
     todos: Itodo[],
     addTodo(event: KeyboardEvent<HTMLInputElement>): void,
+    deleteTodo(index: number): void,
+    checkTodo(todo: {}, index: number): void
 }
 
 interface Itodo {
@@ -31,6 +33,7 @@ export class todoStore implements ItodoStore {
             return;
         }
 
+        // adds new todo element to array of todos
         this.todos.push({
             id: this.todoId,
             title: currInput,
@@ -39,5 +42,17 @@ export class todoStore implements ItodoStore {
 
         this.todoId++;
         this.todoInput.current!.value = "";
+    }
+
+    @action
+    public deleteTodo = (index: number) => {
+        this.todos.splice(index, 1);
+    }
+
+    // Takes todo element as parameter to modify its completed attribute
+    @action
+    public checkTodo = (todo: Itodo, index: number) => {
+        todo.completed = !todo.completed;
+        this.todos.splice(index, 1, todo);
     }
 }
